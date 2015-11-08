@@ -1,0 +1,43 @@
+{
+  "name": "env-manager",
+  "version": "0.1.0",
+  "description": "Environment manager for build tasks",
+  "main": "lib/index.js",
+  "scripts": {
+    "clean": "rimraf lib",
+    "lint": "eslint src --config ./.eslintrc",
+    "build:src": "babel src --out-dir lib",
+    "build:test": "babel test --out-dir lib/test && cp -r test/fixtures/ lib/test/fixtures/",
+    "pretest": "npm run lint && npm run clean && npm run build:src && npm run build:test",
+    "test": "mocha lib/test/unit/*.js",
+    "test:debug": "mocha lib/test/unit/*.js --debug --debug-brk",
+    "posttest": "rimraf lib/test",
+    "prepublish": "npm run lint && npm run clean && npm run build:src"
+  },
+  "keywords": [
+    "build",
+    "environment",
+    "manager"
+  ],
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "author": "Tim Voronov <ziflex@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "merge": "^1.2.0",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.29",
+    "babel-eslint": "^4.1.4",
+    "chai": "^3.4.1",
+    "chai-spies": "^0.7.1",
+    "cp": "^0.2.0",
+    "eslint": "^1.9.0",
+    "eslint-config-airbnb": "^0.1.0",
+    "eslint-plugin-mocha": "^1.0.0",
+    "mocha": "^2.3.3",
+    "rimraf": "^2.4.3"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "linux/dev",
+  "paths": {
+    "input": "src",
+    "output": "dist/linux"
+  }
+}
