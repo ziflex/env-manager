@@ -5,9 +5,7 @@ Environment manager for build tasks.
 [![npm version](https://badge.fury.io/js/env-manager.svg)](https://www.npmjs.com/package/env-manager)
 [![Build Status](https://secure.travis-ci.org/ziflex/env-manager.svg?branch=master)](http://travis-ci.org/ziflex/env-manager)  
 
-Creates environment variables for build tasks.
-```env-manager``` will read environment name from passed parameter ```--env``` and will take particular file with environment variables.
-For matching will be used default pattern - ```environment.{env}.json``` which can be overridden.
+```env-manager``` will match file with environment variables based on passed arguments.
 
 
 ## Install
@@ -18,9 +16,20 @@ For matching will be used default pattern - ```environment.{env}.json``` which c
 
 ```
 
-## Basic Usage
+## Usage
 
-#### ./{gulp|grunt}file.js
+### Basic
+
+For example, we have these files with environment variables.
+
+```sh
+    
+    root
+      environment.dev.json  
+      environment.test.json  
+      environment.prod.json  
+
+```
 
 ```javascript
     
@@ -29,11 +38,93 @@ For matching will be used default pattern - ```environment.{env}.json``` which c
     });
 
 ```
+Running this command.
 
+```sh
 
-### API
+    npm run build -- --env dev
+
+```
+
+Will return a content from ```environment.dev.json```.
+
+### Merge
+
+In order to avoid boilerplate code we can define base `environment.json` with default values
+and override them with values from matched file:
+
+```sh
+    
+    root
+      environment.json
+      environment.dev.json  
+      environment.test.json  
+      environment.prod.json  
+
+```
+
+```javascript
+    
+    var env = require('env-manager')({
+        argv: process.argv,
+        base: 'environment.json'
+    });
+
+```
+
+```sh
+
+    npm run build -- --env dev
+
+```
+
+Will return a content from ```environment.json``` merged with ```environment.dev.json```.
+
+### Custom pattern and directory
+
+It's possible to define a custom match pattern and custom target directory.
+Both of these options are independent.
+
+```sh
+    
+    root
+      environments
+        linux
+          dev.json
+          prod.json
+        windows
+          dev.json
+          prod.json
+
+```
+
+```javascript
+    
+    var path = require('path');
+    var env = require('env-manager')({
+        argv: process.argv,
+        pattern: '{platform}/{env}.json',
+        dir: path.join(__dirname, 'environments')
+    });
+
+```
+
+```sh
+
+    npm run build -- --env dev --platform linux
+
+```
+
+Will return a content from ```environments/linux/dev.json```.
+
+## API
 
 #### manager(options)   
+
+#### options.argv
+Type: `Array<string>`.  
+Node arguments.  
+Required.  
 
 #### options.dir
 Type: `string`.  
