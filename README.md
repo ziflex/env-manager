@@ -5,7 +5,7 @@ Environment manager for build tasks.
 [![npm version](https://badge.fury.io/js/env-manager.svg)](https://www.npmjs.com/package/env-manager)
 [![Build Status](https://secure.travis-ci.org/ziflex/env-manager.svg?branch=master)](http://travis-ci.org/ziflex/env-manager)  
 
-```env-manager``` will match file with environment variables based on passed arguments.
+```env-manager``` matches a file with environment variables based on passed arguments.
 
 
 ## Install
@@ -123,7 +123,7 @@ Will return a content from ```environments/linux/dev.json```.
 
 #### options.argv
 Type: `Array<string>`.  
-Node arguments.  
+Process arguments.  
 Required.  
 
 #### options.dir
@@ -144,3 +144,8 @@ Type: `string`.
 File matching pattern based on arguments.  
 Optional.  
 Default ```environment.{env}.json```.    
+
+#### options.defaults  
+Type: `object`.  
+Default arguments.  
+Optional.  

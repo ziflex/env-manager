@@ -5,8 +5,8 @@ import options from '../../options.js';
 const expect = chai.expect;
 
 describe('options', () => {
-    context('valid options', () => {
-        it('should parse arguments', () => {
+    context('valid "options"', () => {
+        it('should parse "options.argv"', () => {
             const opts = options({
                 argv: ['--env', 'test', '--platform', 'linux']
             });
@@ -51,17 +51,86 @@ describe('options', () => {
 
             expect(opts.pattern).to.equal(pattern);
         });
+
+        it('should use "options.defaults" only', () => {
+            const opts = options({
+                argv: [],
+                defaults: {
+                    env: 'dev'
+                }
+            });
+
+            expect(opts.argv).to.exist;
+            expect(opts.argv.env).to.equal('dev');
+        });
+
+        it('should use "options.defaults" extended by "options.argv', () => {
+            const opts = options({
+                argv: ['--platform', 'linux'],
+                defaults: {
+                    env: 'dev'
+                }
+            });
+
+            expect(opts.argv).to.exist;
+            expect(opts.argv.env).to.equal('dev');
+            expect(opts.argv.platform).to.equal('linux');
+        });
+
+        it('should override "options.defaults" by "options.argv"', () => {
+            const opts = options({
+                argv: ['--env', 'test', '--platform', 'linux'],
+                defaults: {
+                    env: 'dev',
+                    platform: 'windows'
+                }
+            });
+
+            expect(opts.argv).to.exist;
+            expect(opts.argv.env).to.equal('test');
+            expect(opts.argv.platform).to.equal('linux');
+        });
     });
 
-    context('invalid options', () => {
-        it('should throw error when options are missed', () => {
+    context('invalid "options"', () => {
+        it('should throw error when "options" are missed', () => {
             const shouldThrow = () => options();
 
             expect(shouldThrow).to.throw();
         });
 
-        it('should throw error when arguments are missed', () => {
+        it('should throw error when "options" is not of "object" type', () => {
+            const shouldThrow = () => options([]);
+
+            expect(shouldThrow).to.throw();
+        });
+
+        it('should throw error when "options.argv" is missed', () => {
             const shouldThrow = () => options({});
+
+            expect(shouldThrow).to.throw();
+        });
+
+        it('should throw error when "options.argv" is not of "array" type', () => {
+            const shouldThrow = () => options({ argv: {} });
+
+            expect(shouldThrow).to.throw();
+        });
+
+        it('should throw error when "options.defaults" is not of "object" type', () => {
+            const shouldThrow = () => options({ argv: {} });
+
+            expect(shouldThrow).to.throw();
+        });
+
+        it('should throw error when "options.pattern" is not of "string" type', () => {
+            const shouldThrow = () => options({ argv: ['--env', 'dev'], pattern: 1 });
+
+            expect(shouldThrow).to.throw();
+        });
+
+        it('should throw error when "options.dir" is not of "string" type', () => {
+            const shouldThrow = () => options({ argv: ['--env', 'dev'], dir: 1 });
 
             expect(shouldThrow).to.throw();
         });

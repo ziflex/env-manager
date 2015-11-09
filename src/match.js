@@ -6,6 +6,12 @@ const KEY_NOT_FOUND_ERROR = 'Pattern contains invalid key';
 const MATCH_PATTERN = /\{(.*?)}/g;
 const REPLACE_PATTERN = /\{|}/g;
 
+/*
+ * Returns file name based on pattern and arguments values.
+ * @param pattern {string} - File lookup pattern.
+ * @param argv {object} - Arguments values.
+ * @returns {string} - File name.
+ */
 export default function match(pattern, argv) {
     if (!pattern) {
         throw new Error(PATTERN_NOT_FOUND_ERROR);

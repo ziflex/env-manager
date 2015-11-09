@@ -9,6 +9,7 @@
     "mocha"
   ],
   "rules": {
+    "valid-jsdoc": 2,
     "indent": [2, 4],
     "comma-dangle": 0,
     "id-length": 0,
