@@ -1,6 +1,6 @@
 {
   "name": "env-manager",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Environment manager for build tasks",
   "main": "lib/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "build:test": "babel test --out-dir lib/test && cp -r test/fixtures/ lib/test/fixtures/",
     "pretest": "npm run lint && npm run clean && npm run build:src && npm run build:test",
     "test": "mocha lib/test/unit/*.js",
-    "test:debug": "mocha lib/test/unit/*.js --debug --debug-brk",
+    "test:debug": "npm run test -- --debug --debug-brk",
     "posttest": "rimraf lib/test",
     "prepublish": "npm run lint && npm run clean && npm run build:src"
   },

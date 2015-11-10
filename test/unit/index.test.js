@@ -52,10 +52,8 @@ describe('manager', () => {
             });
 
             expect(env).to.exist;
-            expect(env.name).to.equal('linux/dev');
-            expect(env.paths).to.exist;
-            expect(env.paths.input).to.equal('src');
-            expect(env.paths.output).to.equal('dist/linux');
+            expect(env.build).to.exist;
+            expect(env.build.watch).to.equal(true);
         });
     });
 });

@@ -52,6 +52,15 @@ describe('options', () => {
             expect(opts.pattern).to.equal(pattern);
         });
 
+        it('should use "base" file', () => {
+            const opts = options({
+                argv: ['--env', 'dev'],
+                base: 'base.js'
+            });
+
+            expect(opts.base).to.equal('base.js');
+        });
+
         it('should use "options.defaults" only', () => {
             const opts = options({
                 argv: [],

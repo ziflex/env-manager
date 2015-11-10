@@ -1,3 +1,10 @@
+## 0.2.1
+
+### Fixed
+
+* ```base``` option was ignored.
+
+
 ## 0.2.0
 
 ### Added
