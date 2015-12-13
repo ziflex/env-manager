@@ -1,5 +1,11 @@
 {
   "name": "linux/dev",
+  "test": {
+    "server": {
+      "singleRun": false
+    },
+    "paths": "dev"
+  },
   "paths": {
     "input": "src",
     "output": "dist/linux"

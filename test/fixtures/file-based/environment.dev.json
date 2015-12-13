@@ -1,5 +1,8 @@
 {
   "name": "dev",
+  "test": {
+      "singleRun": true
+  },
   "paths": {
     "input": "src",
     "output": "dist"

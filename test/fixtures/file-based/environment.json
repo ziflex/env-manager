@@ -1,3 +1,7 @@
 {
-  "name": "base"
+  "name": "base",
+  "test": {
+      "port": 9090,
+      "singleRun": false
+  }
 }

@@ -1,5 +1,5 @@
 import minimist from 'minimist';
-import merge from 'merge';
+import merge from 'lodash.defaultsdeep';
 import is from 'is';
 
 const OPTIONS_NOT_FOUND_ERROR = 'Options are missed';
@@ -52,7 +52,7 @@ export default function options(params) {
     const base = params.base || null;
 
     return {
-        argv: merge({}, defaults, minimist(params.argv)),
+        argv: merge({}, minimist(params.argv), defaults),
         dir,
         pattern,
         base

@@ -1,6 +1,6 @@
 {
   "name": "env-manager",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Environment manager for build tasks",
   "main": "lib/index.js",
   "scripts": {
@@ -10,7 +10,6 @@
     "build:test": "babel test --out-dir lib/test && cp -r test/fixtures/ lib/test/fixtures/",
     "pretest": "npm run lint && npm run clean && npm run build:src && npm run build:test",
     "test": "mocha lib/test/unit/*.js",
-    "test:debug": "npm run test -- --debug --debug-brk",
     "posttest": "rimraf lib/test",
     "prepublish": "npm run lint && npm run clean && npm run build:src"
   },
@@ -24,9 +23,13 @@
   },
   "author": "Tim Voronov <ziflex@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ziflex/env-manager.git"
+  },
   "dependencies": {
     "is": "^3.1.0",
-    "merge": "^1.2.0",
+    "lodash.defaultsdeep": "^3.10.0",
     "minimist": "^1.2.0"
   },
   "devDependencies": {

@@ -1,3 +1,9 @@
+## 0.2.2
+
+### Fixed
+
+* Merge ignored default values.
+
 ## 0.2.1
 
 ### Fixed

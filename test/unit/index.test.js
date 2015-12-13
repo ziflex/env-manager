@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import chai from 'chai';
 import path from 'path';
 import manager from '../../index.js';
@@ -28,6 +29,8 @@ describe('manager', () => {
             expect(env.paths).to.exist;
             expect(env.paths.input).to.equal('src');
             expect(env.paths.output).to.equal('dist');
+            expect(env.test.port).to.exist;
+            expect(env.test.port).to.equal(9090);
         });
     });
 
@@ -54,6 +57,10 @@ describe('manager', () => {
             expect(env).to.exist;
             expect(env.build).to.exist;
             expect(env.build.watch).to.equal(true);
+            expect(env.test.server.port).to.equal(9090);
+            expect(env.test.server.singleRun).to.false;
+            expect(env.test.paths).to.equal('dev');
         });
     });
 });
+/* eslint-enable no-unused-expressions */

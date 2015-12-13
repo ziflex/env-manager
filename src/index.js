@@ -1,4 +1,4 @@
-import merge from 'merge';
+import merge from 'lodash.defaultsdeep';
 import path from 'path';
 import options from './options';
 import match from './match';
@@ -28,5 +28,5 @@ export default function manager(params) {
         return current;
     }
 
-    return merge({}, base, current);
+    return merge({}, current, base);
 }
