@@ -2,6 +2,7 @@ import merge from 'lodash.defaultsdeep';
 import path from 'path';
 import options from './options';
 import match from './match';
+import module from './module';
 
 /*
  * Matches a file with environment variables based on passed arguments.
@@ -21,8 +22,8 @@ export default function manager(params) {
         return null;
     }
 
-    const current = require(path.join(opt.dir, filename));
-    const base = opt.base ? require(path.join(opt.dir, opt.base)) : null;
+    const current = module(path.join(opt.dir, filename));
+    const base = opt.base ? module(path.join(opt.dir, opt.base)) : null;
 
     if (!base) {
         return current;

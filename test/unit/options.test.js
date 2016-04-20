@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-expressions  */
 import chai from 'chai';
 import path from 'path';
-import options from '../../options.js';
+import options from '../../src/options.js';
 
 const expect = chai.expect;
 
@@ -29,7 +30,7 @@ describe('options', () => {
                 argv: ['--env', 'test', '--platform', 'linux']
             });
 
-            expect(opts.dir).to.equal(path.resolve(__dirname, '../..'));
+            expect(opts.dir).to.equal(path.resolve(__dirname, '../../src'));
         });
 
         it('should use custom folder', () => {

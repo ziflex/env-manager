@@ -1,3 +1,9 @@
+## 0.2.3
+
+### Fixed 
+
+* Loading ES6 modules
+
 ## 0.2.2
 
 ### Fixed

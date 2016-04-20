@@ -1,6 +1,6 @@
 import chai from 'chai';
-import options from '../../options.js';
-import match from '../../match.js';
+import options from '../../src/options.js';
+import match from '../../src/match.js';
 
 const expect = chai.expect;
 
