@@ -1,6 +1,6 @@
 {
   "name": "env-manager",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Environment manager for build tasks",
   "main": "lib/index.js",
   "scripts": {

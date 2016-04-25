@@ -1,6 +1,12 @@
+## 0.2.4
+
+### Fixed
+
+* Exported as ES6 module. Now it's CommonJS module.
+
 ## 0.2.3
 
-### Fixed 
+### Fixed
 
 * Loading ES6 modules
 

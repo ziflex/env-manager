@@ -2,7 +2,7 @@ import merge from 'lodash.defaultsdeep';
 import path from 'path';
 import options from './options';
 import match from './match';
-import module from './module';
+import loadModule from './module';
 
 /*
  * Matches a file with environment variables based on passed arguments.
@@ -14,7 +14,7 @@ import module from './module';
  * @param params.defaults {object) - Default arguments. Optional.
  * @returns {object} - Environment variables.
  */
-export default function manager(params) {
+module.exports = function manager(params) {
     const opt = options(params);
     const filename = match(opt.pattern, opt.argv);
 
@@ -22,12 +22,12 @@ export default function manager(params) {
         return null;
     }
 
-    const current = module(path.join(opt.dir, filename));
-    const base = opt.base ? module(path.join(opt.dir, opt.base)) : null;
+    const current = loadModule(path.join(opt.dir, filename));
+    const base = opt.base ? loadModule(path.join(opt.dir, opt.base)) : null;
 
     if (!base) {
         return current;
     }
 
     return merge({}, current, base);
-}
+};
