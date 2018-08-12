@@ -30,14 +30,14 @@ describe('options', () => {
                 argv: ['--env', 'test', '--platform', 'linux']
             });
 
-            expect(opts.dir).to.equal(path.resolve(__dirname, '../../src'));
+            expect(opts.dir).to.equal(process.cwd());
         });
 
         it('should use custom folder', () => {
             const dir = 'foo/bar';
             const opts = options({
                 argv: ['--env', 'test', '--platform', 'linux'],
-                dir: dir
+                dir
             });
 
             expect(opts.dir).to.equal(dir);
@@ -47,7 +47,7 @@ describe('options', () => {
             const pattern = 'environment.{env}.{platform}.json';
             const opts = options({
                 argv: ['--env', 'test', '--platform', 'linux'],
-                pattern: pattern
+                pattern
             });
 
             expect(opts.pattern).to.equal(pattern);
