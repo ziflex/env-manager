@@ -47,7 +47,7 @@ export default function options(params) {
     }
 
     const pattern = params.pattern || FILE_MATCH_PATTERN;
-    const dir = params.dir || __dirname;
+    const dir = params.dir || process.cwd();
     const defaults = params.defaults || {};
     const base = params.base || null;
 
