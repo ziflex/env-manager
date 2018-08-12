@@ -80,6 +80,27 @@ and override them with values from matched file:
 
 Will return a content from ```environment.json``` merged with ```environment.dev.json```.
 
+#### Config override
+
+Alternatevley, you can override config values by passing new values via CLI arguments.
+
+```json
+{
+  "name": "config",
+  "version": "1.0.0",
+  "server": {
+      "endpoint": "/api",
+      "port": 9090
+  }
+}
+```
+
+```sh
+
+    npm run build -- --version 1.1.0-alpha.1 --server.port 9091
+
+```
+
 ### Custom pattern and directory
 
 It's possible to define a custom match pattern and custom target directory.

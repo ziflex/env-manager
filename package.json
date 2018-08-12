@@ -1,6 +1,6 @@
 {
   "name": "env-manager",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Environment manager for build tasks",
   "main": "lib/index.js",
   "scripts": {
@@ -26,6 +26,7 @@
   "dependencies": {
     "is": "^3.1.0",
     "lodash.defaultsdeep": "^3.10.0",
+    "lodash.merge": "^4.6.1",
     "minimist": "^1.2.0"
   },
   "devDependencies": {

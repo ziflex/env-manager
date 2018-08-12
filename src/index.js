@@ -1,4 +1,5 @@
-import merge from 'lodash.defaultsdeep';
+import defaults from 'lodash.defaultsdeep';
+import merge from 'lodash.merge';
 import path from 'path';
 import options from './options';
 import match from './match';
@@ -22,12 +23,8 @@ module.exports = function manager(params) {
         return null;
     }
 
-    const current = loadModule(path.join(opt.dir, filename));
+    const matched = loadModule(path.join(opt.dir, filename));
     const base = opt.base ? loadModule(path.join(opt.dir, opt.base)) : null;
 
-    if (!base) {
-        return current;
-    }
-
-    return merge({}, current, base);
+    return merge(defaults({}, matched, base), opt.argv);
 };

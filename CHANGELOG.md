@@ -1,3 +1,13 @@
+## 0.3.0
+
+### Added
+
+* Overriding config values via command line arguments
+
+### Fixed
+
+* Default ``dir`` points to file location, instead of working directory.
+
 ## 0.2.4
 
 ### Fixed
