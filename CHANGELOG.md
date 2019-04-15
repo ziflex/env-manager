@@ -1,3 +1,8 @@
+## 0.3.1
+
+### Fixed
+* Vulnerabilities
+
 ## 0.3.0
 
 ### Added
